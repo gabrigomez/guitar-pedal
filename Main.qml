@@ -35,6 +35,22 @@ Window {
       anchors.fill: parent
     }
 
+    component SwitchImage: Image {
+      required property string sourceBaseName
+      property bool checked
+
+      source: `assets/${sourceBaseName}${checked ? "-Checked" : ""}.png`
+    }
+
+    component DeviceSwitch: SwitchImage {
+      property alias tapMargin: tapHandler.margin
+
+      TapHandler {
+        id: tapHandler
+        onTapped: parent.checked = !parent.checked
+      }
+    }
+
     component DeviceText: Text {
       property int fontSize: 20
 
@@ -139,6 +155,50 @@ Window {
           top: parent.top
           topMargin: 20
           left: parent.left
+        }
+      }
+
+      SwitchImage {
+        x: parent.width * 0.33 - width / 2
+        y: 14
+        sourceBaseName: "LED"
+        checked: footSwitch.checked
+
+        DeviceText {
+          text: qsTr("ON")
+          fontSize: 12
+          anchors {
+            top: parent.bottom
+            topMargin: 2
+            horizontalCenter: parent.horizontalCenter
+          }
+        }
+      }
+
+      DeviceSwitch {
+        x: parent.width * 0.66
+        y: 14
+        sourceBaseName: "Switch"
+        tapMargin: 16
+
+        DeviceText {
+          text: "MODE"
+          fontSize: 12
+          anchors {
+            top: parent.bottom
+            topMargin: 4
+            horizontalCenter: parent.horizontalCenter
+          }
+        }
+      }
+
+      DeviceSwitch {
+        id: footSwitch
+        sourceBaseName: "Button-Pedal"
+        anchors {
+          bottom: parent.bottom
+          bottomMargin: 17
+          horizontalCenter: parent.horizontalCenter
         }
       }
     }
