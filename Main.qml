@@ -11,6 +11,16 @@ Window {
 
   color: "white"
 
+  FontLoader {
+    id: russoFontLoader
+    source: "fonts/RussoOne-Regular.ttf"
+  }
+
+  FontLoader {
+    id: prismaFontLoader
+    source: "fonts/Prisma.ttf"
+  }
+
   Item {
     height: 420
     width: 300
@@ -23,6 +33,13 @@ Window {
     Image {
       source: "assets/Guitar-Pedal-Background.png"
       anchors.fill: parent
+    }
+
+    component DeviceText: Text {
+      color: "#191919"
+      font.family: russoFontLoader.font.family
+      font.weight: russoFontLoader.font.weight
+      font.pixelSize: 9
     }
 
     Item {
@@ -72,7 +89,7 @@ Window {
           color: infoLabel.lineColor
         }
 
-        Text {
+        DeviceText {
           id: label
           text: "Time Killer"
           font.pixelSize: 20
