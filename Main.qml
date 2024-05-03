@@ -36,10 +36,12 @@ Window {
     }
 
     component DeviceText: Text {
+      property int fontSize: 20
+
       color: "#191919"
       font.family: russoFontLoader.font.family
       font.weight: russoFontLoader.font.weight
-      font.pixelSize: 9
+      font.pixelSize: fontSize
     }
 
     Item {
@@ -79,8 +81,10 @@ Window {
 
         property alias text: label.text
         property alias font: label.font
+        property alias fontSize: label.fontSize
         property int lineWidth: 200
         property int lineHeight: 2
+
         property color lineColor: "black"
 
         Rectangle {
@@ -92,7 +96,6 @@ Window {
         DeviceText {
           id: label
           text: "Time Killer"
-          font.pixelSize: 20
           anchors.horizontalCenter: parent.horizontalCenter
         }
 
@@ -114,9 +117,10 @@ Window {
       }
 
       InfoText {
-        text: "In"
+        text: "Input"
         spacing: 4
         lineWidth: 40
+        fontSize: 10
 
         anchors {
           top: parent.top
@@ -126,9 +130,10 @@ Window {
       }
 
       InfoText {
-        text: "Out"
+        text: "Output"
         spacing: 4
         lineWidth: 40
+        fontSize: 10
 
         anchors {
           top: parent.top
