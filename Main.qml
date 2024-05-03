@@ -54,7 +54,7 @@ Window {
     component DeviceText: Text {
       property int fontSize: 20
 
-      color: "#191919"
+      color: "black"
       font.family: russoFontLoader.font.family
       font.weight: russoFontLoader.font.weight
       font.pixelSize: fontSize
@@ -215,7 +215,7 @@ Window {
 
         anchors {
           top: parent.top
-          topMargin: 20
+          topMargin: 40
           right: parent.right
         }
       }
@@ -228,14 +228,14 @@ Window {
 
         anchors {
           top: parent.top
-          topMargin: 20
+          topMargin: 40
           left: parent.left
         }
       }
 
       SwitchImage {
         x: parent.width * 0.33 - width / 2
-        y: 14
+        y: 2
         sourceBaseName: "LED"
         checked: footSwitch.checked
 
@@ -252,7 +252,7 @@ Window {
 
       DeviceSwitch {
         x: parent.width * 0.66
-        y: 14
+        y: 2
         sourceBaseName: "Switch"
         tapMargin: 16
 
@@ -272,15 +272,30 @@ Window {
         sourceBaseName: "Button-Pedal"
         anchors {
           bottom: parent.bottom
+          right: parent.right
+          left: parent.left
           bottomMargin: 17
-          horizontalCenter: parent.horizontalCenter
+          leftMargin: 10
+          rightMargin: 10
         }
       }
 
       DeviceKnob {
         anchors.horizontalCenter: parent.horizontalCenter
-        y: 67
+        y: 30
         text: "LEVEL"
+      }
+
+      DeviceKnob {
+        anchors.left: footSwitch.left
+        y: 100
+        text: "TIME"
+      }
+
+      DeviceKnob {
+        anchors.right: footSwitch.right
+        y: 100
+        text: "FEEDBACK"
       }
     }
   }
