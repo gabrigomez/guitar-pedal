@@ -1,6 +1,7 @@
 import QtQuick
 
 Window {
+  id: root
   minimumWidth: 300
   minimumHeight: 420
   maximumWidth: minimumWidth
@@ -31,28 +32,68 @@ Window {
       anchors.topMargin: 17
       anchors.bottomMargin: 17
 
-      Image {
+      component ScrewImage: Image {
         source: "assets/Screw.png"
+      }
+
+      ScrewImage {
         anchors.left: parent.left
         anchors.top: parent.top
       }
 
-      Image {
-        source: "assets/Screw.png"
+      ScrewImage {
         anchors.right: parent.right
         anchors.top: parent.top
       }
 
-      Image {
-        source: "assets/Screw.png"
+      ScrewImage {
         anchors.left: parent.left
         anchors.bottom: parent.bottom
       }
 
-      Image {
-        source: "assets/Screw.png"
+      ScrewImage {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
+      }
+
+      component InfoText: Column {
+        id: infoLabel
+        spacing: 6
+
+        property alias text: label.text
+        property alias font: label.font
+        property int lineWidth: 200
+        property int lineHeight: 2
+        property color lineColor: "black"
+
+        Rectangle {
+          width: infoLabel.lineWidth
+          height: infoLabel.lineHeight
+          color: infoLabel.lineColor
+        }
+
+        Text {
+          id: label
+          text: "Time Killer"
+          font.pixelSize: 20
+          anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Rectangle {
+          width: infoLabel.lineWidth
+          height: infoLabel.lineHeight
+          color: infoLabel.lineColor
+        }
+      }
+
+      InfoText {
+        text: "Time Killer"
+        spacing: 10
+        anchors {
+          top: parent.verticalCenter
+          topMargin: 20
+          horizontalCenter: parent.horizontalCenter
+        }
       }
     }
   }
