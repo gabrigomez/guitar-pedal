@@ -112,6 +112,30 @@ Window {
           horizontalCenter: parent.horizontalCenter
         }
       }
+
+      InfoText {
+        text: "In"
+        spacing: 4
+        lineWidth: 40
+
+        anchors {
+          top: parent.top
+          topMargin: 20
+          right: parent.right
+        }
+      }
+
+      InfoText {
+        text: "Out"
+        spacing: 4
+        lineWidth: 40
+
+        anchors {
+          top: parent.top
+          topMargin: 20
+          left: parent.left
+        }
+      }
     }
   }
 }
